@@ -1,9 +1,9 @@
 FROM golang:1.23 as build
 WORKDIR /app
 COPY . .
-RUN go build -o /server .
+RUN go build -o server .
 
 FROM scratch
-COPY --from=build /server /server
+COPY --from=build server server
 EXPOSE 7878
 CMD ["/server"]
